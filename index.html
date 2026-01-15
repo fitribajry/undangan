@@ -4,60 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Undangan Fitri & Muhammad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400&family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; background-color: #fdfaf6; font-family: 'Georgia', serif; }
+        :root { --primary: #7a8d71; --bg: #fdfaf6; --text: #4a4a4a; }
+        body, html { margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; background-color: var(--bg); color: var(--text); overflow-x: hidden; scroll-behavior: smooth; }
         
-        /* Tampilan Sampul */
-        #cover {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
-                        url('https://www.canva.com/design/DAG-dXLx7zg/Nif8lqAsxbwJSA-ZKWZyEg/thumbnail?width=800') no-repeat center center;
-            background-size: cover;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            color: white; text-align: center; z-index: 99; transition: 0.8s;
-        }
-        #cover h1 { font-size: 28px; margin-bottom: 10px; }
-        #cover p { font-size: 16px; margin: 0; }
-        #cover h2 { font-size: 24px; margin: 10px 0 30px 0; font-style: italic; }
-        
-        button {
-            padding: 12px 25px; font-size: 16px; background-color: #fff;
-            color: #4a4a4a; border: none; border-radius: 30px; cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
+        /* Gaya Seksi & Animasi */
+        section { padding: 50px 20px; text-align: center; opacity: 1; transition: 1s; max-width: 500px; margin: 0 auto; }
+        h2 { font-family: 'Playfair Display', serif; color: var(--primary); margin-bottom: 5px; }
+        .script { font-family: 'Great Vibes', cursive; font-size: 35px; color: var(--primary); }
 
-        /* Video Canva */
-        iframe { width: 100%; height: 100%; border: none; }
+        /* Kartu Kontak Perwakilan */
+        .contact-card { background: #f4f9f1; padding: 25px; border-radius: 20px; margin: 20px 0; border: 1px solid #e0e7dc; }
+        .btn-group { display: flex; gap: 10px; justify-content: center; margin-top: 15px; }
+        .btn-wa { background: var(--primary); color: white; padding: 8px 25px; border-radius: 20px; text-decoration: none; font-size: 14px; font-weight: bold; flex: 1; max-width: 120px; }
+
+        /* RSVP Form */
+        .rsvp-box { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: left; margin-top: 20px; }
+        input, textarea, select { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-family: inherit; }
+        .btn-submit { background: #333; color: white; border: none; padding: 15px; width: 100%; border-radius: 5px; font-weight: bold; cursor: pointer; margin-top: 10px; }
     </style>
 </head>
 <body>
 
-    <div id="cover">
-        <h1>Undangan Pernikahan</h1>
-        <p>Kepada Yth. Bapak/Ibu/Saudara/i:</p>
-        <h2 id="nama-tamu">Nama Tamu</h2>
-        <button onclick="bukaUndangan()">Buka Undangan</button>
-    </div>
+    <section>
+        <span class="script">The Wedding of</span>
+        <h2 style="font-size: 28px;">Fitriah Abdullah Bajry</h2>
+        <p style="font-size: 13px;">Putri dari Bapak Endang Abdullah Nahdi Bajry (Alm) & Ibu Anisah</p>
+        <div class="script" style="font-size: 40px; margin: 10px 0;">&</div>
+        <h2 style="font-size: 28px;">Muhammad Abdullah Bajry</h2>
+        <p style="font-size: 13px;">Putra dari Bapak Abdullah Muhammad Bajry & Ibu Supriatin Yusuf</p>
+    </section>
 
-    <iframe id="video-undangan" 
-            src="https://www.canva.com/design/DAG-dXLx7zg/Nif8lqAsxbwJSA-ZKWZyEg/view?embed&mode=website" 
-            allow="autoplay; fullscreen">
-    </iframe>
+    <section>
+        <div class="contact-card">
+            <div style="font-family: 'Playfair Display', serif; font-size: 24px; border: 1px solid var(--primary); width: 50px; height: 50px; line-height: 50px; border-radius: 50%; margin: 0 auto 15px auto;">FM</div>
+            <p style="font-size: 13px; margin: 0;">For any assistance, please contact our family representative:</p>
+            
+            <div class="btn-group">
+                <a href="https://wa.me/628xxxxxxxxxx" class="btn-wa">Hana</a>
+                <a href="https://wa.me/628xxxxxxxxxx" class="btn-wa">Sofi</a>
+            </div>
+            <p style="font-size: 12px; margin-top: 15px; color: #888;">Sisters of the Bride</p>
+        </div>
+    </section>
+
+    <section>
+        <h2 style="font-size: 22px;">Best Wishes</h2>
+        <div class="rsvp-box">
+            <label style="font-size: 12px; color: #888;">Nama</label>
+            <input type="text" id="name" placeholder="Masukkan nama Anda">
+            
+            <label style="font-size: 12px; color: #888;">Pesan & Doa</label>
+            <textarea id="message" rows="3" placeholder="Tulis ucapan dan doa untuk kedua mempelai"></textarea>
+            
+            <label style="font-size: 12px; color: #888;">Konfirmasi Kehadiran</label>
+            <div style="margin: 10px 0; font-size: 14px;">
+                <input type="radio" name="status" value="Hadir" style="width: auto;"> Hadir
+                <input type="radio" name="status" value="Tidak Hadir" style="width: auto; margin-left: 15px;"> Tidak Hadir
+            </div>
+            
+            <button class="btn-submit" onclick="sendRSVP()">KIRIM UCAPAN</button>
+        </div>
+    </section>
 
     <script>
-        // Ambil nama dari link ?to=Nama
-        const urlParams = new URLSearchParams(window.location.search);
-        const nama = urlParams.get('to');
-        if (nama) {
-            document.getElementById('nama-tamu').innerText = nama.replace(/\+/g, ' ');
-        }
-
-        // Fungsi menghilangkan cover
-        function bukaUndangan() {
-            document.getElementById('cover').style.opacity = '0';
-            setTimeout(() => {
-                document.getElementById('cover').style.display = 'none';
-            }, 800);
+        function sendRSVP() {
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+            const status = document.querySelector('input[name="status"]:checked')?.value || "Belum Konfirmasi";
+            
+            // Masukkan nomor WhatsApp kamu sebagai penerima RSVP di sini
+            const myNumber = "628xxxxxxxxxx"; 
+            
+            const text = `Konfirmasi Undangan Fitri & Muhammad%0A%0ANama: ${name}%0AStatus: ${status}%0APesan: ${message}`;
+            window.open(`https://wa.me/${myNumber}?text=${text}`, '_blank');
         }
     </script>
 
