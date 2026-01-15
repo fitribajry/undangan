@@ -5,44 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Undangan Fitri & Muhammad</title>
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; width: 100%; background-color: #fdfaf6; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; background-color: #fdfaf6; font-family: 'Georgia', serif; }
         
-        /* Kotak Nama Tamu */
-        #guest-container {
-            text-align: center;
-            padding: 40px 20px;
-            background-color: #ffffff;
-            border-bottom: 2px solid #e0d5c1;
+        /* Tampilan Sampul */
+        #cover {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                        url('https://www.canva.com/design/DAG-dXLx7zg/Nif8lqAsxbwJSA-ZKWZyEg/thumbnail?width=800') no-repeat center center;
+            background-size: cover;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            color: white; text-align: center; z-index: 99; transition: 0.8s;
         }
-        #guest-container p { margin: 0; color: #888; font-size: 14px; }
-        #guest-container h2 { margin: 5px 0 0 0; color: #4a4a4a; font-style: italic; }
+        #cover h1 { font-size: 28px; margin-bottom: 10px; }
+        #cover p { font-size: 16px; margin: 0; }
+        #cover h2 { font-size: 24px; margin: 10px 0 30px 0; font-style: italic; }
+        
+        button {
+            padding: 12px 25px; font-size: 16px; background-color: #fff;
+            color: #4a4a4a; border: none; border-radius: 30px; cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
 
-        /* Bingkai Undangan */
-        .invitation-frame {
-            width: 100%;
-            height: 80vh; /* Mengatur tinggi agar kotak nama tetap terlihat */
-            border: none;
-        }
+        /* Video Canva */
+        iframe { width: 100%; height: 100%; border: none; }
     </style>
 </head>
 <body>
 
-    <div id="guest-container">
+    <div id="cover">
+        <h1>Undangan Pernikahan</h1>
         <p>Kepada Yth. Bapak/Ibu/Saudara/i:</p>
         <h2 id="nama-tamu">Nama Tamu</h2>
+        <button onclick="bukaUndangan()">Buka Undangan</button>
     </div>
 
-    <iframe class="invitation-frame" 
+    <iframe id="video-undangan" 
             src="https://www.canva.com/design/DAG-dXLx7zg/Nif8lqAsxbwJSA-ZKWZyEg/view?embed&mode=website" 
             allow="autoplay; fullscreen">
     </iframe>
 
     <script>
-        // Kode untuk mengambil nama dari link URL
+        // Ambil nama dari link ?to=Nama
         const urlParams = new URLSearchParams(window.location.search);
         const nama = urlParams.get('to');
         if (nama) {
             document.getElementById('nama-tamu').innerText = nama.replace(/\+/g, ' ');
+        }
+
+        // Fungsi menghilangkan cover
+        function bukaUndangan() {
+            document.getElementById('cover').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('cover').style.display = 'none';
+            }, 800);
         }
     </script>
 
