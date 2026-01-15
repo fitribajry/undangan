@@ -3,43 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Fitri & Muhammad</title>
+    <title>Undangan Pernikahan - White Lily Theme</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&family=Great+Vibes&display=swap" rel="stylesheet">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <style>
-        body { margin: 0; padding: 0; background-color: #fdfaf6; font-family: serif; text-align: center; }
-        .cover { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; }
-        h1 { color: #7a8d71; font-size: 32px; }
-        .nama-tamu { font-size: 24px; color: #4a4a4a; margin: 20px 0; font-style: italic; }
-        .btn-buka { padding: 15px 40px; background-color: #7a8d71; color: white; border: none; border-radius: 30px; font-size: 16px; cursor: pointer; }
+        :root {
+            --primary-color: #f8f8f8;
+            --text-dark: #4a4a4a;
+            --accent: #8da399; /* Warna hijau daun lembut */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Lato', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--primary-color);
+            overflow-x: hidden;
+        }
+
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: #ffffff;
+        }
+
+        .flower-frame {
+            max-width: 200px;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            margin: 10px 0;
+            color: var(--text-dark);
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-size: 1rem;
+        }
+
+        /* Quote Section */
+        .quote {
+            background-color: #fff;
+            font-style: italic;
+        }
+
+        /* Profile Section */
+        .couple-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        /* Tombol */
+        .btn {
+            padding: 12px 25px;
+            background: var(--text-dark);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            margin-top: 30px;
+        }
+
+        .btn:hover {
+            background: var(--accent);
+        }
+
+        /* Music Placeholder */
+        #music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: white;
+            padding: 10px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
 
-    <div class="cover">
-        <p>The Wedding of</p>
-        <h1>Fitri & Muhammad</h1>
-        <p style="margin-top: 50px;">Kepada Yth:</p>
-        <div class="nama-tamu" id="guest-name">Nama Tamu</div>
-        <button class="btn-buka" onclick="bukaUndangan()">Buka Undangan</button>
-    </div>
+    <section class="hero">
+        <div data-aos="fade-down" data-aos-duration="1500">
+            <img src="https://www.transparentpng.com/download/lily-flower/white-lily-flower-free-png-vG9YfG.png" alt="Lily" class="flower-frame">
+        </div>
+        <h2 data-aos="fade-up" data-aos-delay="300">The Wedding of</h2>
+        <h1 data-aos="zoom-in" data-aos-delay="600">Romeo & Juliet</h1>
+        <p data-aos="fade-up" data-aos-delay="900">12.12.2026</p>
+        <a href="#isi" class="btn" data-aos="fade-up" data-aos-delay="1200">BUKA UNDANGAN</a>
+    </section>
 
-    <audio id="musikUndangan" loop>
-        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
-    </audio>
+    <section id="isi" class="quote">
+        <div data-aos="fade-right">
+            <p>"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya."</p>
+            <p><strong>- QS. Ar-Rum: 21 -</strong></p>
+        </div>
+    </section>
 
+    <section>
+        <div data-aos="fade-up">
+            <h2 style="margin-bottom: 50px;">Mempelai</h2>
+            <div class="couple-name">Romeo Montague</div>
+            <p>Putra dari Bpk. A & Ibu B</p>
+            <div style="font-size: 2rem; margin: 20px 0;">&</div>
+            <div class="couple-name">Juliet Capulet</div>
+            <p>Putri dari Bpk. C & Ibu D</p>
+        </div>
+    </section>
+
+    <div id="music-control">🎵</div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        const params = new URLSearchParams(window.location.search);
-        const to = params.get('to');
-        if (to) document.getElementById('guest-name').innerText = to.replace(/\+/g, ' ');
-
-        function bukaUndangan() {
-            // Putar Musik
-            document.getElementById('musikUndangan').play();
-            // Pindah ke link Canva asli agar tidak gepeng
-            setTimeout(() => {
-                window.location.href = "https://www.canva.com/design/DAG-dXLx7zg/Nif8lqAsxbwJSA-ZKWZyEg/view?website#2"; 
-            }, 500);
-        }
+        AOS.init({
+            duration: 1000,
+            once: true,
+        });
     </script>
-
 </body>
 </html>
