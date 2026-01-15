@@ -2,80 +2,43 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Undangan Fitri & Muhammad</title>
     <style>
-        /* Memaksa layar HP untuk tidak bisa zoom tapi bisa scroll */
-        body, html { 
-            margin: 0; padding: 0; 
-            height: 100%; width: 100%; 
-            overflow: hidden; /* Mencegah double scrollbar */
-            background-color: #fdfaf6; 
-        }
-
-        /* Wadah utama yang bisa di-scroll */
-        .scroll-container {
-            width: 100%;
-            height: 100vh;
-            overflow-y: auto; /* INI KUNCINYA AGAR BISA SCROLL */
-            -webkit-overflow-scrolling: touch; /* Biar scroll di iPhone halus */
-        }
-
-        /* Nama Tamu Melayang di Depan Video */
-        .cover-overlay {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            width: 100%;
-            z-index: 100;
-            pointer-events: none; /* Supaya tidak menghalangi jempol saat scroll */
-        }
-
-        .nama-tamu {
-            font-family: serif;
-            font-size: 24px;
-            color: #7a8d71;
-            background: rgba(255,255,255,0.7); /* Background tipis agar teks terbaca */
-            padding: 10px;
-            display: inline-block;
-            border-radius: 10px;
-        }
-
-        /* Frame Canva dibuat sangat panjang agar semua halaman muncul */
-        iframe {
-            width: 100%;
-            height: 5000px; /* Dibuat tinggi sekali agar tidak terpotong */
-            border: none;
-            display: block;
-        }
+        body { margin: 0; padding: 0; background-color: #fdfaf6; font-family: serif; text-align: center; }
+        .cover { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; }
+        h1 { color: #7a8d71; font-size: 32px; }
+        .nama-tamu { font-size: 24px; color: #4a4a4a; margin: 20px 0; font-style: italic; }
+        .btn-buka { padding: 15px 40px; background-color: #7a8d71; color: white; border: none; border-radius: 30px; font-size: 16px; cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <div class="scroll-container">
-        <div class="cover-overlay" id="tamu">
-            <p style="margin:0; font-size: 12px;">Kepada Yth:</p>
-            <div class="nama-tamu" id="guest-name">Nama Tamu</div>
-            <p style="font-size: 10px; color: #888;">Scroll ke bawah untuk membuka</p>
-        </div>
-
-        <iframe src="https://www.canva.com/design/DAG-dXLx7zg/Nif8lqAsxbwJSA-ZKWZyEg/view?embed&mode=website"></iframe>
+    <div class="cover">
+        <p>The Wedding of</p>
+        <h1>Fitri & Muhammad</h1>
+        <p style="margin-top: 50px;">Kepada Yth:</p>
+        <div class="nama-tamu" id="guest-name">Nama Tamu</div>
+        <button class="btn-buka" onclick="bukaUndangan()">Buka Undangan</button>
     </div>
 
+    <audio id="musikUndangan" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+    </audio>
+
     <script>
-        // Ambil nama dari link ?to=Nama
         const params = new URLSearchParams(window.location.search);
         const to = params.get('to');
         if (to) document.getElementById('guest-name').innerText = to.replace(/\+/g, ' ');
 
-        // Hilangkan tulisan nama setelah di-scroll sedikit
-        const container = document.querySelector('.scroll-container');
-        container.onscroll = function() {
-            if (container.scrollTop > 100) {
-                document.getElementById('tamu').style.display = 'none';
-            }
-        };
+        function bukaUndangan() {
+            // Putar Musik
+            document.getElementById('musikUndangan').play();
+            // Pindah ke link Canva asli agar tidak gepeng
+            setTimeout(() => {
+                window.location.href = "https://www.canva.com/design/DAG-dXLx7zg/Nif8lqAsxbwJSA-ZKWZyEg/view?website#2"; 
+            }, 500);
+        }
     </script>
 
 </body>
